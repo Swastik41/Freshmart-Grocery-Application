@@ -474,7 +474,7 @@ This project is designed as a portfolio showcase demonstrating:
 
 ---
 
-**Last Updated:** February 2025  
+**Last Updated:** February 2026  
 **Version:** 2.0 - Production Ready ✅
 
 ---
@@ -483,6 +483,6 @@ This project is designed as a portfolio showcase demonstrating:
 
 ### ⭐ If this project helped you, please consider giving it a star!
 
-[GitHub](https://github.com/yourusername/FreshMart) | [Documentation](./VALIDATION_ERROR_HANDLING.md) | [Best Practices](./BEST_PRACTICES_GUIDE.md)
+[GitHub](https://github.com/Swastik41/Freshmart-Grocery-Application) | [Documentation](./VALIDATION_ERROR_HANDLING.md) | [Best Practices](./BEST_PRACTICES_GUIDE.md)
 
 </div>
