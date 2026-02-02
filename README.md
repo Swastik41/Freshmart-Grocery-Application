@@ -427,8 +427,8 @@ This project is open source and available under the MIT License.
 ## 👨‍💻 Author
 
 **FreshMart Development Team**
-- GitHub: [Your GitHub Profile]
-- Email: your.email@example.com
+- GitHub: https://github.com/Swastik41
+- Email: swastikpathak.107@gmail.com
 
 ---
 
