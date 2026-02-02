@@ -1,0 +1,147 @@
+﻿@* @model List<FreshMart.Models.Product> *@
+
+@* <h2 class="fw-bold text-success mb-4">Manage Products</h2> *@
+
+@* <a href="/AdminProduct/Create" class="btn btn-success mb-3">+ Add Product</a> *@
+
+@* <table class="table table-bordered shadow-sm"> *@
+@*     <thead class="table-success"> *@
+@*         <tr> *@
+@*             <th>Image</th> *@
+@*             <th>Name</th> *@
+@*             <th>Category</th> *@
+@*             <th>Price</th> *@
+@*             <th style="width:160px;">Actions</th> *@
+@*         </tr> *@
+@*     </thead> *@
+
+@*     <tbody> *@
+@*         @foreach (var p in Model) *@
+@*         { *@
+@*             <tr> *@
+@*                 <td> *@
+@*                     <img src="~/uploads/@p.ImagePath" *@
+@*                          style="height:60px; width:60px; object-fit:cover;" *@
+@*                          class="rounded" /> *@
+@*                 </td> *@
+@*                 <td>@p.Name</td> *@
+@*                 <td>@p.Category?.CategoryName</td> *@
+@*                 <td>$@p.Price</td> *@
+@*                 <td> *@
+@*                     <a href="/AdminProduct/Edit/@p.ProductId" class="btn btn-primary btn-sm">Edit</a> *@
+@*                     <a href="/AdminProduct/Delete/@p.ProductId" *@
+@*                        class="btn btn-danger btn-sm" *@
+@*                        onclick="return confirm('Are you sure?');"> *@
+@*                         Delete *@
+@*                     </a> *@
+@*                 </td> *@
+@*             </tr> *@
+@*         } *@
+@*     </tbody> *@
+@* </table> *@
+
+
+@model List<FreshMart.Models.Product>
+
+<h2 class="fw-bold text-success mb-4">Manage Products</h2>
+
+<!-- ADD PRODUCT BUTTON -->
+<a href="/AdminProduct/Create" class="btn btn-success mb-3 rounded-pill px-4 fw-semibold shadow-sm">
+    + Add Product
+</a>
+
+<!-- PRODUCT TABLE CARD -->
+<div class="card shadow-sm border-0 rounded-4 p-3">
+
+    <table class="table table-hover align-middle mb-0">
+        <thead class="bg-success text-white">
+            <tr>
+                <th style="width:80px;">Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th style="width:160px;" class="text-end">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr class="admin-row">
+
+                    <!-- IMAGE -->
+                    <td>
+                        <img src="~/uploads/@p.ImagePath"
+                             class="rounded shadow-sm"
+                             style="height:60px; width:60px; object-fit:cover;" />
+                    </td>
+
+                    <!-- NAME -->
+                    <td class="fw-semibold">@p.Name</td>
+
+                    <!-- CATEGORY -->
+                    <td>@p.Category?.CategoryName</td>
+
+                    <!-- PRICE -->
+                    <td class="fw-bold text-success">$@p.Price</td>
+
+                    <!-- ACTION BUTTONS -->
+                    <td class="text-end">
+
+                        <a href="/AdminProduct/Edit/@p.ProductId"
+                           class="btn btn-outline-primary btn-sm rounded-pill px-3 me-1">
+                            Edit
+                        </a>
+
+                        <a href="/AdminProduct/Delete/@p.ProductId"
+                           class="btn btn-outline-danger btn-sm rounded-pill px-3"
+                           onclick="return confirm('Are you sure you want to delete this product?');">
+                            Delete
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<!-- STYLING -->
+<style>
+    .card {
+        border-radius: 1.2rem !important;
+    }
+
+    .admin-row:hover {
+        background-color: #f3fff4 !important;
+        transition: .25s ease;
+    }
+
+    thead {
+        border-radius: 12px !important;
+    }
+
+        thead tr th {
+            font-weight: 600 !important;
+            padding-top: 14px !important;
+            padding-bottom: 14px !important;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+    tbody tr td {
+        padding-top: 14px !important;
+        padding-bottom: 14px !important;
+    }
+
+    .btn-outline-primary:hover {
+        background: #0d6efd;
+        color: white !important;
+    }
+
+    .btn-outline-danger:hover {
+        background: #dc3545;
+        color: white !important;
+    }
+</style>

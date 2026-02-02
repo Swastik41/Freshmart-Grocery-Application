@@ -1,0 +1,166 @@
+﻿
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .login-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 0;
+    }
+
+    .login-card {
+        width: 420px;
+        background: rgba(255, 255, 255, 0.90);
+        backdrop-filter: blur(12px);
+        border-radius: 28px;
+        padding: 45px 50px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .logo-badge {
+        width: 65px;
+        height: 65px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+    }
+
+    .title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #4C1D95;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        color: #6B7280;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #4B5563;
+    }
+
+    .form-control {
+        height: 50px;
+        border-radius: 12px;
+        border: 1px solid #D1D5DB;
+        padding-left: 14px;
+        transition: 0.25s;
+    }
+
+        .form-control:focus {
+            border-color: #9333EA;
+            box-shadow: 0 0 0 0.15rem rgba(147, 51, 234, 0.3);
+        }
+
+    .btn-login {
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        height: 52px;
+        color: white;
+        border-radius: 14px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        margin-top: 10px;
+        transition: 0.25s;
+        box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4);
+    }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(147, 51, 234, 0.55);
+        }
+
+    .register-row {
+        text-align: center;
+        margin-top: 18px;
+        color: #4B5563;
+        font-size: 15px;
+    }
+
+        .register-row a {
+            color: #7C3AED;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+            .register-row a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<div class="login-center">
+    <div class="login-card">
+
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="logo-badge">FM</div>
+            <div>
+                <div class="title">Welcome Back</div>
+                <div class="subtitle">Login to continue shopping</div>
+            </div>
+        </div>
+
+        <form method="post">
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="Email" placeholder="Enter email" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <!-- important: keep name=PasswordHash -->
+                <input type="password" class="form-control" name="PasswordHash" placeholder="Enter password" required />
+            </div>
+
+            <button type="submit" class="btn-login">Login</button>
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger mt-3">@TempData["Error"]</div>
+            }
+
+        </form>
+
+        <div class="register-row">
+            Don't have an account?
+            <a href="/User/Register">Register</a>
+        </div>
+
+    </div>
+</div>

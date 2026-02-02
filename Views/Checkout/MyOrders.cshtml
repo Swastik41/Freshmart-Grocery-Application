@@ -1,0 +1,112 @@
+﻿@* @model List<FreshMart.Models.Order> *@
+
+@* <h2 class="fw-bold text-success mb-4">My Orders</h2> *@
+
+@* @if (!Model.Any()) *@
+@* { *@
+@*     <p>You have no orders yet.</p> *@
+@*     <a href="/Products" class="btn btn-success">Start Shopping</a> *@
+@* } *@
+@* else *@
+@* { *@
+@*     <table class="table table-bordered shadow-sm"> *@
+@*         <thead class="table-success"> *@
+@*             <tr> *@
+@*                 <th>Order No.</th> *@
+@*                 <th>Date</th> *@
+@*                 <th>Total</th> *@
+@*                 <th>Details</th> *@
+@*             </tr> *@
+@*         </thead> *@
+
+@*         <tbody> *@
+@*             @foreach (var o in Model) *@
+@*             { *@
+@*                 <tr> *@
+@*                     <td>@o.OrderId</td> *@
+@*                     <td>@o.OrderDate.ToString("yyyy-MM-dd")</td> *@
+@*                     <td>$@o.TotalAmount</td> *@
+@*                     <td> *@
+@*                         <a href="/Checkout/OrderDetails/@o.OrderId" *@
+@*                            class="btn btn-success btn-sm">View</a> *@
+@*                     </td> *@
+@*                 </tr> *@
+@*             } *@
+@*         </tbody> *@
+@*     </table> *@
+@* } *@
+
+
+@model List<FreshMart.Models.Order>
+
+<h2 class="fw-bold text-success mb-4">My Orders</h2>
+
+@if (!Model.Any())
+{
+    <div class="card shadow-sm border-0 rounded-4 p-4 text-center">
+        <h5 class="text-secondary mb-3">You have no orders yet.</h5>
+        <a href="/Products" class="btn btn-success px-4 py-2 rounded-pill">
+            Start Shopping →
+        </a>
+    </div>
+}
+else
+{
+    <div class="card shadow-sm border-0 rounded-4 p-4">
+
+        <h5 class="fw-bold text-secondary mb-3">Order History</h5>
+
+        <table class="table table-borderless align-middle">
+            <thead>
+                <tr class="text-secondary small">
+                    <th>Order No.</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th class="text-end">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var o in Model)
+                {
+                    <tr class="orders-row">
+                        <td class="fw-semibold">#@o.OrderId</td>
+
+                        <td>@o.OrderDate.ToString("MMMM dd, yyyy")</td>
+
+                        <td class="fw-bold text-success">
+                            $@o.TotalAmount
+                        </td>
+
+                        <!-- STATUS BADGE -->
+                        <td>
+                            <span class="badge bg-success px-3 py-2 rounded-pill shadow-sm">
+                                ✔ Completed
+                            </span>
+                        </td>
+
+                        <td class="text-end">
+                            <a href="/Checkout/OrderDetails/@o.OrderId"
+                               class="btn btn-outline-success btn-sm rounded-pill px-3 py-1">
+                                View →
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+}
+
+<style>
+    .orders-row:hover {
+        background-color: #f6fff0 !important;
+        transition: 0.25s ease;
+    }
+
+    .card {
+        border-radius: 1rem !important;
+    }
+</style>

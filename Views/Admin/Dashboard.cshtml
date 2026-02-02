@@ -1,0 +1,416 @@
+﻿@* @{ *@
+@*     ViewData["Title"] = "Admin Dashboard"; *@
+@* } *@
+
+@* <h2 class="fw-bold text-success mb-4">Admin Dashboard</h2> *@
+
+@* <div class="row"> *@
+
+@*     <!-- TOTAL PRODUCTS --> *@
+@*     <div class="col-md-4 mb-4"> *@
+@*         <div class="card shadow border-0 p-4 text-center"> *@
+@*             <h5 class="fw-bold">Total Products</h5> *@
+@*             <h3 class="text-success fw-bold">@ViewBag.TotalProducts</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@*     <!-- TOTAL CATEGORIES --> *@
+@*     <div class="col-md-4 mb-4"> *@
+@*         <div class="card shadow border-0 p-4 text-center"> *@
+@*             <h5 class="fw-bold">Total Categories</h5> *@
+@*             <h3 class="text-success fw-bold">@ViewBag.TotalCategories</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@*     <!-- TOTAL USERS --> *@
+@*     <div class="col-md-4 mb-4"> *@
+@*         <div class="card shadow border-0 p-4 text-center"> *@
+@*             <h5 class="fw-bold">Total Users</h5> *@
+@*             <h3 class="text-success fw-bold">@ViewBag.TotalUsers</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@* </div> *@
+
+@* <hr class="my-4" /> *@
+
+@* <h4 class="fw-bold text-secondary mb-3">Quick Actions</h4> *@
+
+@* <div class="row mb-4"> *@
+
+@*     <div class="col-md-3 mb-3"> *@
+@*         <a href="/AdminCategory" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Manage Categories</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+@*     <div class="col-md-3 mb-3"> *@
+@*         <a href="/AdminProduct" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Manage Products</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+
+@*     <div class="col-md-3"> *@
+@*         <a href="/AdminProduct/Create" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Add New Product</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+@*     <div class="col-md-3"> *@
+@*         <a href="/AdminCategory/Create" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Add New Category</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+@*     <div class="col-md-3 mb-3"> *@
+@*         <a href="/AdminUser" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Manage Users</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+
+@*     <div class="col-md-3 mb-3"> *@
+@*         <a href="/AdminUser/Create" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Add New User</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+
+@* </div> *@
+
+@* <a href="/Admin/Logout" class="btn btn-danger mt-3">Logout</a> *@
+
+
+@* @{ *@
+@*     ViewData["Title"] = "Admin Dashboard"; *@
+@* } *@
+
+@* <h2 class="fw-bold text-success mb-4">Admin Dashboard</h2> *@
+
+@* <!-- ROW 1: Stats --> *@
+@* <div class="row g-4"> *@
+
+@*     <div class="col-md-3"> *@
+@*         <div class="card shadow p-3 text-center border-success"> *@
+@*             <h6 class="fw-bold">Total Products</h6> *@
+@*             <h3 class="text-success">@ViewBag.TotalProducts</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@*     <div class="col-md-3"> *@
+@*         <div class="card shadow p-3 text-center border-success"> *@
+@*             <h6 class="fw-bold">Total Categories</h6> *@
+@*             <h3 class="text-success">@ViewBag.TotalCategories</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@*     <div class="col-md-3"> *@
+@*         <div class="card shadow p-3 text-center border-success"> *@
+@*             <h6 class="fw-bold">Total Users</h6> *@
+@*             <h3 class="text-success">@ViewBag.TotalUsers</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@*     <div class="col-md-3"> *@
+@*         <div class="card shadow p-3 text-center border-success"> *@
+@*             <h6 class="fw-bold">Total Orders</h6> *@
+@*             <h3 class="text-success">@ViewBag.TotalOrders</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@* </div> *@
+
+@* <!-- ROW 2: Revenue Stats --> *@
+@* <div class="row g-4 mt-2"> *@
+
+@*     <div class="col-md-4"> *@
+@*         <div class="card shadow p-3 text-center border-primary"> *@
+@*             <h6 class="fw-bold">Total Revenue</h6> *@
+@*             <h3 class="text-primary">$@ViewBag.TotalRevenue</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@*     <div class="col-md-4"> *@
+@*         <div class="card shadow p-3 text-center border-primary"> *@
+@*             <h6 class="fw-bold">Today's Orders</h6> *@
+@*             <h3 class="text-primary">@ViewBag.TodaysOrders</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@*     <div class="col-md-4"> *@
+@*         <div class="card shadow p-3 text-center border-primary"> *@
+@*             <h6 class="fw-bold">Today's Revenue</h6> *@
+@*             <h3 class="text-primary">$@ViewBag.TodaysRevenue</h3> *@
+@*         </div> *@
+@*     </div> *@
+
+@* </div> *@
+
+@* <!-- ROW 3: Average Order --> *@
+@* <div class="row g-4 mt-2"> *@
+@*     <div class="col-md-4"> *@
+@*         <div class="card shadow p-3 text-center border-secondary"> *@
+@*             <h6 class="fw-bold">Avg Order Value</h6> *@
+@*             <h3 class="text-secondary">$@ViewBag.AverageOrder</h3> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
+
+@* <!-- Quick Actions --> *@
+@* <hr class="mt-5" /> *@
+
+@* <h4 class="fw-bold text-secondary">Quick Actions</h4> *@
+
+@* <div class="row mt-3"> *@
+
+@*     <div class="col-md-3 mb-3"> *@
+@*         <a href="/AdminCategory" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Manage Categories</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+@*     <div class="col-md-3 mb-3"> *@
+@*         <a href="/AdminProduct" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Manage Products</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+@*     <div class="col-md-3 mb-3"> *@
+@*         <a href="/AdminUser" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Manage Users</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+@*     <div class="col-md-3 mb-3"> *@
+@*         <a href="/AdminUser/Create" class="text-decoration-none"> *@
+@*             <div class="card shadow p-3 text-center border-success"> *@
+@*                 <h6 class="fw-bold">Add New User</h6> *@
+@*             </div> *@
+@*         </a> *@
+@*     </div> *@
+
+@* </div> *@
+
+@* <a href="/Admin/Logout" class="btn btn-danger mt-4">Logout</a> *@
+
+
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h2 class="fw-bold text-success mb-4">Admin Dashboard</h2>
+
+<!-- ROW 1: Stats -->
+<div class="row g-4">
+
+    <div class="col-md-3">
+        <div class="card shadow p-3 text-center border-success">
+            <h6 class="fw-bold">Total Products</h6>
+            <h3 class="text-success">@ViewBag.TotalProducts</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow p-3 text-center border-success">
+            <h6 class="fw-bold">Total Categories</h6>
+            <h3 class="text-success">@ViewBag.TotalCategories</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow p-3 text-center border-success">
+            <h6 class="fw-bold">Total Users</h6>
+            <h3 class="text-success">@ViewBag.TotalUsers</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow p-3 text-center border-success">
+            <h6 class="fw-bold">Total Orders</h6>
+            <h3 class="text-success">@ViewBag.TotalOrders</h3>
+        </div>
+    </div>
+
+</div>
+
+<!-- ROW 2: Revenue Stats -->
+<div class="row g-4 mt-2">
+
+    <div class="col-md-4">
+        <div class="card shadow p-3 text-center border-primary">
+            <h6 class="fw-bold">Total Revenue</h6>
+            <h3 class="text-primary">$@ViewBag.TotalRevenue</h3>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow p-3 text-center border-primary">
+            <h6 class="fw-bold">Today's Orders</h6>
+            <h3 class="text-primary">@ViewBag.TodaysOrders</h3>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow p-3 text-center border-primary">
+            <h6 class="fw-bold">Today's Revenue</h6>
+            <h3 class="text-primary">$@ViewBag.TodaysRevenue</h3>
+        </div>
+    </div>
+
+</div>
+
+<!-- ROW 3: Average Order -->
+<div class="row g-4 mt-2">
+    <div class="col-md-4">
+        <div class="card shadow p-3 text-center border-secondary">
+            <h6 class="fw-bold">Avg Order Value</h6>
+            <h3 class="text-secondary">$@ViewBag.AverageOrder</h3>
+        </div>
+    </div>
+</div>
+
+<!-- CHARTS SECTION -->
+<h4 class="fw-bold mt-5 text-secondary">Sales Analytics</h4>
+
+<div class="row mt-3">
+
+    <!-- DAILY REVENUE LINE CHART -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow p-3">
+            <h5 class="fw-bold">Daily Revenue (Last 7 Days)</h5>
+            <canvas id="dailyRevenueChart"></canvas>
+        </div>
+    </div>
+
+    <!-- CATEGORY-WISE BAR CHART -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow p-3">
+            <h5 class="fw-bold">Category-wise Sales</h5>
+            <canvas id="categoryChart"></canvas>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <!-- PAYMENT METHOD PIE CHART -->
+    <div class="card shadow p-3" style="height: 350px;">
+        <h5 class="fw-bold">Payment Method Breakdown</h5>
+        <canvas id="paymentChart" style="max-height: 260px;"></canvas>
+    </div>
+
+
+</div>
+
+<!-- Quick Actions -->
+<hr class="mt-5" />
+
+<h4 class="fw-bold text-secondary">Quick Actions</h4>
+
+<div class="row mt-3">
+
+    <div class="col-md-3 mb-3">
+        <a href="/AdminCategory" class="text-decoration-none">
+            <div class="card shadow p-3 text-center border-success">
+                <h6 class="fw-bold">Manage Categories</h6>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <a href="/AdminProduct" class="text-decoration-none">
+            <div class="card shadow p-3 text-center border-success">
+                <h6 class="fw-bold">Manage Products</h6>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <a href="/AdminUser" class="text-decoration-none">
+            <div class="card shadow p-3 text-center border-success">
+                <h6 class="fw-bold">Manage Users</h6>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <a href="/AdminUser/Create" class="text-decoration-none">
+            <div class="card shadow p-3 text-center border-success">
+                <h6 class="fw-bold">Add New User</h6>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<a href="/Admin/Logout" class="btn btn-danger mt-4">Logout</a>
+
+<!-- CHART SCRIPTS -->
+<script>
+    // DAILY REVENUE LINE CHART
+    new Chart(document.getElementById("dailyRevenueChart"), {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.DailyLabels)),
+            datasets: [{
+                label: "Revenue ($)",
+                data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.DailyRevenue)),
+                borderColor: "#16a34a",
+                borderWidth: 3,
+                tension: 0.4,
+                fill: false
+            }]
+        }
+    });
+
+    // CATEGORY SALES BAR CHART
+    new Chart(document.getElementById("categoryChart"), {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.CategoryLabels)),
+            datasets: [{
+                label: "Revenue ($)",
+                data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.CategorySales)),
+                backgroundColor: "#7C3AED",
+                borderRadius: 6
+            }]
+        }
+    });
+
+    // PAYMENT METHOD PIE CHART
+    new Chart(document.getElementById("paymentChart"), {
+        type: 'pie',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.PaymentLabels)),
+            datasets: [{
+                data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.PaymentValues)),
+                backgroundColor: ["#7C3AED", "#16a34a", "#f59e0b", "#ef4444"]
+            }]
+        }
+    });
+</script>
+

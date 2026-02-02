@@ -1,0 +1,382 @@
+﻿
+
+
+@* @model FreshMart.Models.User *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Register"; *@
+@* } *@
+
+@* <style> *@
+@*     body { *@
+@*         background: linear-gradient(135deg, #7C3AED, #9333EA); *@
+@*         min-height: 100vh; *@
+@*         margin: 0; *@
+@*     } *@
+
+@*     .register-center { *@
+@*         display: flex; *@
+@*         justify-content: center; *@
+@*         align-items: center; *@
+@*         padding: 60px 0; *@
+@*     } *@
+
+@*     .register-card { *@
+@*         width: 480px; *@
+@*         background: rgba(255, 255, 255, 0.90); *@
+@*         backdrop-filter: blur(12px); *@
+@*         border-radius: 28px; *@
+@*         padding: 45px 50px; *@
+@*         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); *@
+@*         animation: fadeIn 0.5s ease-in-out; *@
+@*     } *@
+
+@*     @@keyframes fadeIn { *@
+@*         from { *@
+@*             opacity: 0; *@
+@*             transform: translateY(20px); *@
+@*         } *@
+
+@*         to { *@
+@*             opacity: 1; *@
+@*             transform: translateY(0); *@
+@*         } *@
+@*     } *@
+
+@*     .logo-badge { *@
+@*         width: 70px; *@
+@*         height: 70px; *@
+@*         border-radius: 18px; *@
+@*         background: linear-gradient(135deg, #7C3AED, #9333EA); *@
+@*         color: #ffffff; *@
+@*         display: flex; *@
+@*         justify-content: center; *@
+@*         align-items: center; *@
+@*         font-size: 30px; *@
+@*         font-weight: 700; *@
+@*         margin-bottom: 10px; *@
+@*         box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4); *@
+@*     } *@
+
+@*     .title { *@
+@*         font-size: 30px; *@
+@*         font-weight: 700; *@
+@*         color: #4C1D95; *@
+@*         margin-bottom: 5px; *@
+@*     } *@
+
+@*     .subtitle { *@
+@*         color: #6B7280; *@
+@*         font-size: 16px; *@
+@*         margin-bottom: 30px; *@
+@*     } *@
+
+@*     .form-label { *@
+@*         font-weight: 600; *@
+@*         margin-bottom: 6px; *@
+@*         color: #4B5563; *@
+@*     } *@
+
+@*     .form-control { *@
+@*         height: 50px; *@
+@*         border-radius: 12px; *@
+@*         border: 1px solid #D1D5DB; *@
+@*         padding-left: 14px; *@
+@*         transition: 0.25s; *@
+@*     } *@
+
+@*         .form-control:focus { *@
+@*             border-color: #9333EA; *@
+@*             box-shadow: 0 0 0 0.15rem rgba(147, 51, 234, 0.3); *@
+@*         } *@
+
+@*     .btn-register { *@
+@*         background: linear-gradient(135deg, #7C3AED, #9333EA); *@
+@*         height: 52px; *@
+@*         color: white; *@
+@*         border-radius: 14px; *@
+@*         width: 100%; *@
+@*         font-size: 18px; *@
+@*         font-weight: 600; *@
+@*         border: none; *@
+@*         margin-top: 10px; *@
+@*         transition: 0.25s; *@
+@*         box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4); *@
+@*     } *@
+
+@*         .btn-register:hover { *@
+@*             transform: translateY(-2px); *@
+@*             box-shadow: 0 14px 28px rgba(147, 51, 234, 0.55); *@
+@*         } *@
+
+@*     .login-row { *@
+@*         text-align: center; *@
+@*         margin-top: 18px; *@
+@*         color: #4B5563; *@
+@*         font-size: 15px; *@
+@*     } *@
+
+@*         .login-row a { *@
+@*             color: #7C3AED; *@
+@*             font-weight: 600; *@
+@*             text-decoration: none; *@
+@*         } *@
+
+@*             .login-row a:hover { *@
+@*                 text-decoration: underline; *@
+@*             } *@
+@* </style> *@
+
+
+@* <div class="register-center"> *@
+@*     <div class="register-card"> *@
+
+@*         <div class="d-flex align-items-center gap-3 mb-4"> *@
+@*             <div class="logo-badge">FM</div> *@
+@*             <div> *@
+@*                 <div class="title">Create an Account</div> *@
+@*                 <div class="subtitle">Join FreshMart Grocery</div> *@
+@*             </div> *@
+@*         </div> *@
+
+@*         <form method="post"> *@
+
+@*             <div class="mb-3"> *@
+@*                 <label class="form-label">Full Name</label> *@
+@*                 <input type="text" class="form-control" name="FullName" placeholder="Enter full name" required /> *@
+@*             </div> *@
+
+@*             <div class="mb-3"> *@
+@*                 <label class="form-label">Email</label> *@
+@*                 <input type="email" class="form-control" name="Email" placeholder="Enter email" required /> *@
+@*             </div> *@
+
+@*             <div class="mb-3"> *@
+@*                 <label class="form-label">Password</label> *@
+@*                 <input asp-for="PasswordHash" class="form-control" type="password" /> *@
+
+@*             </div> *@
+
+@*             <div class="mb-3"> *@
+@*                 <label class="form-label">Confirm Password</label> *@
+@*                 <input type="password" class="form-control" name="ConfirmPassword" placeholder="Re-enter password" required /> *@
+@*             </div> *@
+
+@*             <div class="mb-3"> *@
+@*                 <label class="form-label fw-bold">Select User Type</label> *@
+@*                 <select class="form-control" name="Role" required> *@
+@*                     <option value="Customer">Customer</option> *@
+@*                     <option value="Admin">Admin</option> *@
+@*                 </select> *@
+@*             </div> *@
+
+
+@*             <button class="btn-register" type="submit">Register</button> *@
+
+@*             @if (ViewBag.Error != null) *@
+@*             { *@
+@*                 <div class="alert alert-danger mt-3">@ViewBag.Error</div> *@
+@*             } *@
+
+@*         </form> *@
+
+@*         <div class="login-row"> *@
+@*             Already have an account? <a href="/User/Login">Login</a> *@
+@*         </div> *@
+
+@*     </div> *@
+@* </div> *@
+
+
+@model FreshMart.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .register-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 0;
+    }
+
+    .register-card {
+        width: 480px;
+        background: rgba(255, 255, 255, 0.90);
+        backdrop-filter: blur(12px);
+        border-radius: 28px;
+        padding: 45px 50px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .logo-badge {
+        width: 70px;
+        height: 70px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+    }
+
+    .title {
+        font-size: 30px;
+        font-weight: 700;
+        color: #4C1D95;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        color: #6B7280;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #4B5563;
+    }
+
+    .form-control {
+        height: 50px;
+        border-radius: 12px;
+        border: 1px solid #D1D5DB;
+        padding-left: 14px;
+        transition: 0.25s;
+    }
+
+        .form-control:focus {
+            border-color: #9333EA;
+            box-shadow: 0 0 0 0.15rem rgba(147, 51, 234, 0.3);
+        }
+
+    .btn-register {
+        background: linear-gradient(135deg, #7C3AED, #9333EA);
+        height: 52px;
+        color: white;
+        border-radius: 14px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        margin-top: 10px;
+        transition: 0.25s;
+        box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4);
+    }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(147, 51, 234, 0.55);
+        }
+
+    .login-row {
+        text-align: center;
+        margin-top: 18px;
+        color: #4B5563;
+        font-size: 15px;
+    }
+
+        .login-row a {
+            color: #7C3AED;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+            .login-row a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+
+<div class="register-center">
+    <div class="register-card">
+
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="logo-badge">FM</div>
+            <div>
+                <div class="title">Create an Account</div>
+                <div class="subtitle">Join FreshMart Grocery</div>
+            </div>
+        </div>
+
+        <form asp-action="Register" method="post">
+
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" placeholder="Enter email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input asp-for="Password" class="form-control" type="password" placeholder="Minimum 6 characters" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Re-enter password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Select User Type</label>
+                <select asp-for="Role" class="form-control">
+                    <option value="Customer">Customer</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+            <button class="btn-register" type="submit">Register</button>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+            }
+
+        </form>
+
+        <div class="login-row">
+            Already have an account? <a href="/User/Login">Login</a>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

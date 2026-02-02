@@ -1,0 +1,349 @@
+﻿
+
+
+@* @model IEnumerable<FreshMart.Models.Product> *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Products"; *@
+@* } *@
+
+@* <!-- PAGE TITLE --> *@
+@* <h2 class="fw-bold text-success mb-4">FreshMart Products</h2> *@
+
+@* <!-- CATEGORY BAR --> *@
+@* <div class="category-bar d-flex gap-2 flex-wrap mb-4"> *@
+@*     <a href="/Products" class="cat-btn active">All</a> *@
+@*     <a href="/Products/Category/1" class="cat-btn">Fruits</a> *@
+@*     <a href="/Products/Category/2" class="cat-btn">Vegetables</a> *@
+@*     <a href="/Products/Category/3" class="cat-btn">Dairy</a> *@
+@*     <a href="/Products/Category/4" class="cat-btn">Bakery</a> *@
+@* </div> *@
+
+@* <!-- PRODUCT GRID --> *@
+@* <div class="row g-4"> *@
+@*     @foreach (var item in Model) *@
+@*     { *@
+@*         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6"> *@
+@*             <div class="prod-card shadow-sm"> *@
+
+@*                 <!-- IMAGE --> *@
+@*                 <div class="prod-img"> *@
+@*                     <img src="~/uploads/@item.ImagePath" /> *@
+@*                 </div> *@
+
+@*                 <!-- TEXT --> *@
+@*                 <div class="prod-body"> *@
+@*                     <h5 class="prod-title">@item.Name</h5> *@
+@*                     <p class="prod-weight">@item.Weight</p> *@
+
+@*                     <p class="prod-price"> *@
+@*                         $@item.Price *@
+@*                     </p> *@
+
+@*                     <div class="d-flex justify-content-center"> *@
+@*                         <a href="/Products/Details/@item.ProductId" *@
+@*                            class="view-btn"> *@
+@*                             View Details *@
+@*                         </a> *@
+@*                     </div> *@
+@*                 </div> *@
+
+@*             </div> *@
+@*         </div> *@
+@*     } *@
+@* </div> *@
+
+@* <!-- STYLES --> *@
+@* <style> *@
+@*     /* CATEGORY TAG BUTTONS */ *@
+@*     .cat-btn { *@
+@*         padding: 8px 20px; *@
+@*         border-radius: 30px; *@
+@*         border: 2px solid #198754; *@
+@*         color: #198754; *@
+@*         font-weight: 600; *@
+@*         transition: all .25s ease; *@
+@*         text-decoration: none; *@
+@*     } *@
+
+@*         .cat-btn:hover { *@
+@*             background: #198754 !important; *@
+@*             color: #fff !important; *@
+@*         } *@
+
+@*         .cat-btn.active { *@
+@*             background: #198754; *@
+@*             color: #fff; *@
+@*         } *@
+
+@*     /* PRODUCT CARD */ *@
+@*     .prod-card { *@
+@*         background: #ffffff; *@
+@*         border-radius: 20px; *@
+@*         overflow: hidden; *@
+@*         transition: transform .3s ease, box-shadow .3s ease; *@
+@*         height: 100%; *@
+@*     } *@
+
+@*         .prod-card:hover { *@
+@*             transform: translateY(-8px); *@
+@*             box-shadow: 0 12px 28px rgba(0,0,0,0.12); *@
+@*         } *@
+
+@*     /* IMAGE */ *@
+@*     .prod-img { *@
+@*         height: 220px; *@
+@*         overflow: hidden; *@
+@*         border-radius: 20px 20px 0 0; *@
+@*     } *@
+
+@*         .prod-img img { *@
+@*             height: 100%; *@
+@*             width: 100%; *@
+@*             object-fit: cover; *@
+@*             transition: transform .35s ease; *@
+@*         } *@
+
+@*     .prod-card:hover .prod-img img { *@
+@*         transform: scale(1.08); *@
+@*     } *@
+
+@*     /* CONTENT */ *@
+@*     .prod-body { *@
+@*         padding: 18px; *@
+@*         text-align: center; *@
+@*     } *@
+
+@*     .prod-title { *@
+@*         font-size: 1.1rem; *@
+@*         font-weight: 700; *@
+@*         margin-bottom: 5px; *@
+@*     } *@
+
+@*     .prod-weight { *@
+@*         color: #777; *@
+@*         font-size: .9rem; *@
+@*         margin-bottom: 8px; *@
+@*     } *@
+
+@*     .prod-price { *@
+@*         color: #24a148; *@
+@*         font-weight: 700; *@
+@*         font-size: 1.2rem; *@
+@*         margin-bottom: 15px; *@
+@*     } *@
+
+@*     /* VIEW BUTTON */ *@
+@*     .view-btn { *@
+@*         padding: 8px 20px; *@
+@*         border-radius: 25px; *@
+@*         border: 2px solid #24a148; *@
+@*         color: #24a148; *@
+@*         font-weight: 600; *@
+@*         transition: all .25s ease; *@
+@*         text-decoration: none; *@
+@*     } *@
+
+@*         .view-btn:hover { *@
+@*             background: #24a148; *@
+@*             color: white; *@
+@*         } *@
+@* </style> *@
+
+
+@model IEnumerable<FreshMart.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<style>
+
+    /* ---------------- PAGE TITLE ---------------- */
+    .products-title {
+        font-size: 40px;
+        font-weight: 800;
+        color: #7C3AED;
+        margin-bottom: 25px;
+    }
+
+    /* ---------------- CATEGORY FILTERS ---------------- */
+    .filter-pill {
+        padding: 8px 22px;
+        border-radius: 30px;
+        border: 2px solid #7C3AED;
+        color: #7C3AED;
+        font-weight: 600;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: 0.25s;
+        display: inline-block;
+    }
+
+        .filter-pill:hover {
+            background: #7C3AED;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .filter-pill.active {
+            background: #7C3AED;
+            color: #fff;
+            border-color: #7C3AED;
+        }
+
+    /* ---------------- PRODUCT CARDS ---------------- */
+    .product-card-premium {
+        border-radius: 22px;
+        padding: 18px;
+        background: #ffffff;
+        box-shadow: 0px 8px 25px rgba(147, 51, 234, 0.15);
+        transition: 0.35s ease;
+        text-align: center;
+        overflow: hidden;
+        height: 100%;
+    }
+
+        .product-card-premium:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 35px rgba(147, 51, 234, 0.30);
+        }
+
+        .product-card-premium img {
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            object-fit: cover;
+            transition: 0.35s ease;
+        }
+
+        .product-card-premium:hover img {
+            transform: scale(1.08);
+        }
+
+    /* PRICE */
+    .price-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: #7C3AED;
+        margin-top: 6px;
+    }
+
+    /* DETAILS BUTTON */
+    .btn-details {
+        background: #fff;
+        border: 2px solid #7C3AED;
+        color: #7C3AED;
+        font-weight: 700;
+        padding: 8px 22px;
+        border-radius: 25px;
+        transition: 0.25s ease;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+        .btn-details:hover {
+            background: #7C3AED;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 20px rgba(147,51,234,0.30);
+        }
+
+    .product-description {
+        font-size: 14px;
+        color: #6b6b6b;
+        margin-top: 8px;
+        margin-bottom: 12px;
+        line-height: 1.4;
+        height: 38px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .btn-row-full {
+        display: flex;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .btn-half {
+        flex: 1;
+        padding: 12px 0;
+        text-align: center;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        border-radius: 0;
+    }
+
+    .btn-left {
+        background: #7C3AED;
+        color: white;
+        border-radius: 25px 0 0 25px;
+    }
+
+    .btn-right {
+        border: 2px solid #7C3AED;
+        color: #7C3AED;
+        background: white;
+        border-radius: 0 25px 25px 0;
+    }
+
+
+</style>
+
+
+
+<!-- PAGE TITLE -->
+<h2 class="products-title">FreshMart Products</h2>
+
+<!-- CATEGORY FILTERS -->
+<div class="mb-4">
+    <a href="/Products" class="filter-pill @(ViewBag.CategoryId == null ? "active" : "")">All</a>
+
+    @foreach (var cat in ViewBag.Categories)
+    {
+        <a href="/Products/Category/@cat.CategoryId"
+           class="filter-pill @(ViewBag.CategoryId == cat.CategoryId ? "active" : "")">
+            @cat.CategoryName
+        </a>
+    }
+</div>
+
+
+<!-- PRODUCT GRID -->
+<div class="row g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <div class="product-card-premium">
+
+                <img src="~/uploads/@item.ImagePath" 
+                     alt="@item.Name"
+                     onerror="this.onerror=null; this.src='/images/placeholder.svg'; this.style.backgroundColor='#f3f4f6';" />
+
+                <h5 class="mt-3">@item.Name</h5>
+
+                <p class="product-description">@item.Description</p>
+
+                <p class="text-muted mb-1">@item.Weight</p>
+
+                <p class="price-text mb-3">$@item.Price</p>
+                <div class="btn-row-full mt-3">
+
+                    <a href="/Cart/Add/@item.ProductId" class="btn-half btn-left">
+                        🛒 Add to Cart
+                    </a>
+
+                    <a href="/Products/Details/@item.ProductId" class="btn-half btn-right">
+                        View Details
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    }
+</div>

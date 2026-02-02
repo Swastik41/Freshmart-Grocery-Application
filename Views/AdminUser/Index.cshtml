@@ -1,0 +1,86 @@
+﻿@* @model IEnumerable<FreshMart.Models.User> *@
+
+@* <h2 class="fw-bold text-success mb-4">Manage Users</h2> *@
+
+@* <a href="/AdminUser/Create" class="btn btn-success mb-3">➕ Add User</a> *@
+
+@* <table class="table table-bordered"> *@
+@*     <thead class="table-light"> *@
+@*         <tr> *@
+@*             <th>ID</th> *@
+@*             <th>Full Name</th> *@
+@*             <th>Email</th> *@
+@*             <th>Role</th> *@
+@*             <th style="width:120px;">Actions</th> *@
+@*         </tr> *@
+@*     </thead> *@
+
+@*     <tbody> *@
+@*         @foreach (var u in Model) *@
+@*         { *@
+@*             <tr> *@
+@*                 <td>@u.UserId</td> *@
+@*                 <td>@u.FullName</td> *@
+@*                 <td>@u.Email</td> *@
+@*                 <td>@u.Role</td> *@
+@*                 <td> *@
+@*                     <a href="/AdminUser/Delete/@u.UserId" *@
+@*                        onclick="return confirm('Delete this user?')" *@
+@*                        class="btn btn-danger btn-sm">Delete</a> *@
+@*                 </td> *@
+@*             </tr> *@
+@*         } *@
+@*     </tbody> *@
+@* </table> *@
+
+
+@model IEnumerable<FreshMart.Models.User>
+
+<h2 class="fw-bold text-success mb-4">Manage Users</h2>
+
+<a href="/AdminUser/Create" class="btn btn-success mb-3">➕ Add User</a>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th style="width:180px;">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.UserId</td>
+                <td>@u.FullName</td>
+                <td>@u.Email</td>
+                <td>@u.Role</td>
+
+                <td class="d-flex gap-2">
+
+                    <!-- EDIT BUTTON -->
+                    <a asp-controller="AdminUser"
+                       asp-action="Edit"
+                       asp-route-id="@u.UserId"
+                       class="btn btn-warning btn-sm">
+                        ✏️ Edit
+                    </a>
+
+                    <!-- DELETE -->
+                    <a asp-controller="AdminUser"
+                       asp-action="Delete"
+                       asp-route-id="@u.UserId"
+                       onclick="return confirm('Delete this user?')"
+                       class="btn btn-danger btn-sm">
+                        🗑 Delete
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

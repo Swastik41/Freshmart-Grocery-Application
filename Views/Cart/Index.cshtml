@@ -1,0 +1,208 @@
+﻿
+
+
+@model List<FreshMart.Models.CartItem>
+<style>
+
+    /* Table Cleanup */
+    table.table {
+        border-collapse: separate;
+        border-spacing: 0 12px;
+    }
+
+    thead th {
+        padding: 14px;
+        background: #d8f0e0 !important;
+        font-size: 1rem;
+    }
+
+    /* Cart Row Styling */
+    .cart-row {
+        background: #ffffff !important;
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        transform: translateY(0);
+        transition: all 0.2s ease;
+    }
+
+        .cart-row:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+        }
+
+    /* Product Image */
+    .cart-img-wrapper {
+        width: 160px;
+        height: 120px;
+        overflow: hidden;
+        border-radius: 14px;
+    }
+
+    .cart-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Quantity Buttons */
+    .qty-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        padding: 0;
+        font-weight: bold;
+        font-size: 18px;
+        background: #f2f2f2;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #444;
+        transition: 0.2s;
+    }
+
+        .qty-btn:hover {
+            background: #dcdcdc;
+        }
+
+        .qty-btn.plus {
+            color: green;
+        }
+
+        .qty-btn.minus {
+            color: red;
+        }
+
+    /* Remove Button */
+    .btn-outline-danger {
+        border-radius: 50px !important;
+        padding: 6px 12px;
+        font-size: 16px;
+        border-width: 2px !important;
+    }
+
+        .btn-outline-danger:hover {
+            background: #ff4b4b !important;
+            color: white !important;
+        }
+
+    /* Total Price */
+    .cart-total {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #0d8a3d;
+    }
+
+    /* Checkout Button */
+    .checkout-btn {
+        background: #ffb000 !important;
+        border: none;
+        color: #333;
+        border-radius: 50px;
+        transition: 0.25s ease;
+    }
+
+        .checkout-btn:hover {
+            background: #e39c00 !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+
+</style>
+
+
+@{
+    ViewData["Title"] = "Your Cart";
+}
+
+<a href="/Products"
+   class="btn btn-outline-success px-4 py-2 rounded-pill mb-4 shadow-sm fw-semibold">
+    ← Continue Shopping
+</a>
+
+
+<h2 class="fw-bold text-success mb-4">🛒 Your Shopping Cart</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-light border shadow-sm p-4 rounded-3 text-center">
+        <h5 class="fw-bold text-secondary mb-2">Your cart is empty</h5>
+        <a href="/Products" class="btn btn-success px-4 py-2 rounded-pill">
+            Browse Products →
+        </a>
+    </div>
+}
+else
+{
+    <div class="card shadow-sm border-0 rounded-4 p-3">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-success rounded-3">
+                <tr>
+                    <th class="ps-3">Product</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="cart-row">
+                        <td class="fw-semibold ps-3">@item.Name</td>
+
+                        <td>
+                            <div class="cart-img-wrapper shadow-sm rounded-3">
+                                <img src="~/uploads/@item.ImagePath"
+                                     class="cart-img" />
+                            </div>
+                        </td>
+
+                        <td class="fw-bold text-success fs-6">
+                            $@item.Price
+                        </td>
+
+                        <td>
+                            <div class="d-flex align-items-center">
+
+                                <a href="/Cart/Decrease/@item.ProductId"
+                                   class="btn qty-btn minus">−</a>
+
+                                <span class="mx-2 fw-bold fs-6">@item.Quantity</span>
+
+                                <a href="/Cart/Increase/@item.ProductId"
+                                   class="btn qty-btn plus">+</a>
+
+                            </div>
+                        </td>
+
+                        <td class="fw-bold fs-6">
+                            $@(item.Price * item.Quantity)
+                        </td>
+
+                        <td>
+                            <a href="/Cart/Remove/@item.ProductId"
+                               class="btn btn-outline-danger rounded-pill px-3 py-1">
+                                ✕
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Total + Checkout -->
+    <div class="text-end mt-4">
+        <h3 class="fw-bold text-success mb-3">
+            Total: $@Model.Sum(i => i.Price * i.Quantity)
+        </h3>
+
+        <a href="/Checkout"
+           class="btn btn-warning btn-lg fw-bold px-5 py-3 shadow-sm rounded-3 checkout-btn">
+            Proceed to Checkout →
+        </a>
+    </div>
+}

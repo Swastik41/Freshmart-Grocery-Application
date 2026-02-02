@@ -1,0 +1,353 @@
+/* GLOBAL STYLING */
+/*body {
+    background-color: #f8fdf8;
+    font-family: 'Segoe UI', sans-serif;
+}*/
+
+/* NAVBAR */
+/*.navbar {
+    background-color: #28a745 !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+    .nav-link:hover {
+        color: #ffe97f !important;
+    }*/
+
+/* HERO SECTION */
+/*.hero-banner {
+    background: url('/images/hero-grocery.jpg') no-repeat center/cover;
+    height: 380px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.hero-overlay {
+    background: rgba(0,0,0,0.4);
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    padding: 40px;
+    color: white;
+}*/
+
+/* PRODUCT CARDS */
+/*.product-card {
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+    }*/
+
+
+/* -------------------------------------------------------
+   GLOBAL THEME STYLES
+--------------------------------------------------------- */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8faf9;
+    color: #2d3436;
+}
+
+/* -------------------------------------------------------
+   NAVBAR
+--------------------------------------------------------- */
+
+/*.fresh-navbar {
+    background: #2ecc71;
+    padding: 14px 0;
+}
+
+    .fresh-navbar .nav-link {
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+        .fresh-navbar .nav-link:hover {
+            opacity: 0.85;
+        }
+
+.navbar-brand {
+    font-size: 22px;
+}*/
+
+.nav-purple {
+    font-weight: 600;
+    color: #4B5563 !important; /* neutral text */
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.20s ease-in-out;
+}
+
+    .nav-purple:hover {
+        color: #7C3AED !important;
+    }
+
+    .nav-purple::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        height: 2px;
+        width: 0%;
+        background: #7C3AED;
+        transition: width 0.25s ease-in-out;
+    }
+
+    .nav-purple:hover::after {
+        width: 100%;
+    }
+
+/* -------------------------------------------------------
+   FOOTER
+--------------------------------------------------------- */
+
+.fresh-footer {
+    background: #27ae60;
+    color: white;
+}
+
+.footer-link {
+    color: #eafaf1;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+    .footer-link:hover {
+        text-decoration: underline;
+    }
+
+.fresh-hr {
+    border-top: 1px solid #8cd4a5;
+    width: 70%;
+    margin: auto;
+}
+
+/* -------------------------------------------------------
+   BUTTONS
+--------------------------------------------------------- */
+
+.btn-success {
+    background-color: #2ecc71 !important;
+    border-color: #27ae60 !important;
+    font-weight: 600;
+}
+
+    .btn-success:hover {
+        background-color: #27ae60 !important;
+    }
+
+.btn-outline-success {
+    border-color: #2ecc71 !important;
+    color: #27ae60 !important;
+}
+
+    .btn-outline-success:hover {
+        background-color: #2ecc71 !important;
+        color: white !important;
+        border-color: #27ae60 !important;
+    }
+
+/* -------------------------------------------------------
+   PRODUCT CARDS
+--------------------------------------------------------- */
+
+.product-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+.product-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #27ae60;
+}
+
+/* -------------------------------------------------------
+   FORMS (Login / Register / Checkout)
+--------------------------------------------------------- */
+
+.fresh-form {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+    .fresh-form input,
+    .fresh-form select,
+    .fresh-form textarea {
+        border-radius: 10px;
+        padding: 10px 14px;
+    }
+
+/* -------------------------------------------------------
+   GENERAL
+--------------------------------------------------------- */
+
+.shadow-soft {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+}
+
+.rounded-lg {
+    border-radius: 14px !important;
+}
+
+/* HERO SECTION */
+.hero-banner {
+    height: 480px;
+    background-image: url('../images/hero-grocery.png'); /* <-- your image here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    height: 100%;
+    text-align: center;
+    padding: 40px;
+}
+
+/* CART IMAGE */
+.cart-img-wrapper {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.cart-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ROW HOVER */
+.cart-row:hover {
+    background: #f9fff5 !important;
+    transition: 0.25s ease;
+}
+
+/* QUANTITY BUTTONS */
+.qty-btn {
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+    .qty-btn.minus {
+        border: 1px solid #dc3545;
+        color: #dc3545;
+    }
+
+    .qty-btn.plus {
+        border: 1px solid #198754;
+        color: #198754;
+    }
+
+    .qty-btn.minus:hover {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .qty-btn.plus:hover {
+        background-color: #198754;
+        color: white;
+    }
+
+/* CHECKOUT BUTTON */
+.checkout-btn {
+    border-radius: 14px;
+    transition: all 0.25s ease;
+}
+
+    .checkout-btn:hover {
+        background-color: #ffce3a;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+.checkout-item-row:hover {
+    background-color: #f6fff0;
+    transition: 0.25s ease;
+}
+
+.card {
+    border-radius: 1rem !important;
+}
+
+.checkout-place-btn {
+    transition: 0.25s ease;
+}
+
+    .checkout-place-btn:hover {
+        background-color: #1b8f47;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+<style >
+.nav-purple {
+    font-weight: 600;
+    color: #4B5563 !important; /* neutral text */
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.20s ease-in-out;
+}
+
+.nav-purple:hover {
+    color: #7C3AED !important;
+}
+
+.nav-purple::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    height: 2px;
+    width: 0%;
+    background: #7C3AED;
+    transition: width 0.25s ease-in-out;
+}
+
+.nav-purple:hover::after {
+    width: 100%;
+}
+
+</style >

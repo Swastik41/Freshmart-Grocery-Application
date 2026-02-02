@@ -1,0 +1,130 @@
+﻿@* @model FreshMart.Models.Order *@
+
+@* <h2 class="fw-bold text-success mb-4">Order #@Model.OrderId</h2> *@
+
+@* <p><strong>Date:</strong> @Model.OrderDate</p> *@
+@* <p><strong>Total:</strong> $@Model.TotalAmount</p> *@
+
+@* <h4 class="mt-4">Items</h4> *@
+
+@* <table class="table table-bordered"> *@
+@*     <thead class="table-success"> *@
+@*         <tr> *@
+@*             <th>Product</th> *@
+@*             <th>Qty</th> *@
+@*             <th>Price</th> *@
+@*             <th>Total</th> *@
+@*         </tr> *@
+@*     </thead> *@
+
+@*     <tbody> *@
+@*         @foreach (var item in ViewBag.Items) *@
+@*         { *@
+@*             <tr> *@
+@*                 <td>@item.ProductId</td> *@
+@*                 <td>@item.Quantity</td> *@
+@*                 <td>$@item.Price</td> *@
+@*                 <td>$@(item.Price * item.Quantity)</td> *@
+@*             </tr> *@
+@*         } *@
+@*     </tbody> *@
+@* </table> *@
+
+@* <a href="/Checkout/MyOrders" class="btn btn-secondary">Back to Orders</a> *@
+
+
+@model FreshMart.Models.Order
+
+<h2 class="fw-bold text-success mb-4">Order Details</h2>
+
+@{
+    List<FreshMart.Models.Product> products = ViewBag.Products as List<FreshMart.Models.Product>;
+}
+
+<!-- ORDER HEADER -->
+<div class="card shadow-sm border-0 rounded-4 mb-4 p-4">
+
+    <div class="d-flex justify-content-between flex-wrap">
+
+        <div>
+            <h4 class="fw-bold mb-1">Order #@Model.OrderId</h4>
+            <p class="mb-1 text-secondary">
+                <strong>Date:</strong> @Model.OrderDate.ToString("MMMM dd, yyyy")
+            </p>
+
+            <p class="mb-0 text-secondary">
+                <strong>Total:</strong>
+                <span class="text-success fw-bold">$@Model.TotalAmount</span>
+            </p>
+        </div>
+
+        <div class="align-self-start">
+            <span class="badge bg-success px-4 py-2 rounded-pill fs-6 shadow-sm">
+                ✔ Completed
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ITEMS LIST -->
+<div class="card shadow-sm border-0 rounded-4 p-4">
+
+    <h5 class="fw-bold mb-3 text-secondary">Items in Your Order</h5>
+
+    <table class="table table-borderless align-middle">
+        <thead>
+            <tr class="text-secondary small">
+                <th style="width:70px;">Image</th>
+                <th>Product</th>
+                <th class="text-center">Qty</th>
+                <th class="text-end">Price</th>
+                <th class="text-end">Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in ViewBag.Items)
+            {
+                var product = products.FirstOrDefault(p => p.ProductId == item.ProductId);
+
+                <tr class="order-row">
+                    <td>
+                        <img src="~/uploads/@product?.ImagePath"
+                             class="shadow-sm"
+                             style="height:60px;width:60px;object-fit:cover;border-radius:12px;" />
+                    </td>
+
+                    <td class="fw-semibold">@product?.Name</td>
+
+                    <td class="text-center fw-bold">@item.Quantity</td>
+
+                    <td class="text-end">$@item.Price</td>
+
+                    <td class="text-end fw-bold">
+                        $@(item.Price * item.Quantity)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<div class="mt-4">
+    <a href="/Checkout/MyOrders" class="btn btn-secondary px-4 py-2">
+        ← Back to Orders
+    </a>
+</div>
+
+<style>
+    .order-row:hover {
+        background-color: #f7fff3;
+        transition: 0.25s ease;
+    }
+
+    .card {
+        border-radius: 1rem !important;
+    }
+</style>

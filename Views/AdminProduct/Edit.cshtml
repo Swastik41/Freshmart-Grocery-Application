@@ -1,0 +1,191 @@
+﻿@* @model FreshMart.Models.Product *@
+
+@* <h2 class="fw-bold text-success mb-4">Edit Product</h2> *@
+
+@* <form method="post" enctype="multipart/form-data"> *@
+
+@*     <input type="hidden" name="ProductId" value="@Model.ProductId" /> *@
+
+@*     <div class="mb-3"> *@
+@*         <label class="form-label fw-bold">Name</label> *@
+@*         <input type="text" class="form-control" name="Name" value="@Model.Name" required /> *@
+@*     </div> *@
+
+@*     <div class="mb-3"> *@
+@*         <label class="form-label fw-bold">Category</label> *@
+@*         <select name="CategoryId" class="form-control" required> *@
+@*             @foreach (var c in ViewBag.Categories) *@
+@*             { *@
+@*                 <option value="@c.CategoryId" selected="@(c.CategoryId == Model.CategoryId)"> *@
+@*                     @c.CategoryName *@
+@*                 </option> *@
+@*             } *@
+@*         </select> *@
+@*     </div> *@
+
+@*     <div class="mb-3"> *@
+@*         <label class="form-label fw-bold">Price ($)</label> *@
+@*         <input type="number" step="0.01" class="form-control" name="Price" value="@Model.Price" required /> *@
+@*     </div> *@
+
+@*     <div class="mb-3"> *@
+@*         <label class="form-label fw-bold">Weight</label> *@
+@*         <input type="text" class="form-control" name="Weight" value="@Model.Weight" /> *@
+@*     </div> *@
+
+@*     <div class="mb-3"> *@
+@*         <label class="form-label fw-bold">Description</label> *@
+@*         <textarea class="form-control" name="Description">@Model.Description</textarea> *@
+@*     </div> *@
+
+@*     <div class="mb-3"> *@
+@*         <label class="form-label fw-bold">Current Image</label><br /> *@
+@*         <img src="~/uploads/@Model.ImagePath" style="height:100px; width:100px;" /> *@
+@*     </div> *@
+
+@*     <div class="mb-3"> *@
+@*         <label class="form-label fw-bold">Upload New Image</label> *@
+@*         <input type="file" name="imageFile" class="form-control" /> *@
+@*     </div> *@
+
+@*     <button class="btn btn-success">Update</button> *@
+@*     <a href="/AdminProduct" class="btn btn-secondary ms-2">Back</a> *@
+
+@* </form> *@
+
+
+@model FreshMart.Models.Product
+
+<h2 class="fw-bold text-success mb-4">Edit Product</h2>
+
+<div class="card shadow-lg border-0 rounded-4 p-4">
+
+    <form method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="ProductId" value="@Model.ProductId" />
+
+        <div class="row g-4">
+
+            <!-- LEFT SIDE FORM -->
+            <div class="col-md-7">
+
+                <!-- NAME -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Product Name</label>
+                    <input type="text" name="Name"
+                           value="@Model.Name"
+                           class="form-control form-control-lg rounded-3" required />
+                </div>
+
+                <!-- CATEGORY -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Category</label>
+                    <select name="CategoryId"
+                            class="form-select form-select-lg rounded-3" required>
+                        @foreach (var c in ViewBag.Categories)
+                        {
+                            <option value="@c.CategoryId"
+                                    selected="@(c.CategoryId == Model.CategoryId)">
+                                @c.CategoryName
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                <!-- PRICE -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Price ($)</label>
+                    <input type="number" step="0.01"
+                           class="form-control form-control-lg rounded-3"
+                           name="Price" value="@Model.Price" required />
+                </div>
+
+                <!-- WEIGHT -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Weight</label>
+                    <input type="text"
+                           class="form-control form-control-lg rounded-3"
+                           name="Weight"
+                           value="@Model.Weight" />
+                </div>
+
+                <!-- DESCRIPTION -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control form-control-lg rounded-3"
+                              rows="4"
+                              name="Description">@Model.Description</textarea>
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE IMAGE SECTION -->
+            <div class="col-md-5">
+
+                <!-- CURRENT IMAGE -->
+                <label class="form-label fw-semibold">Current Image</label>
+                <div class="card shadow-sm border-0 rounded-4 p-3 text-center mb-3">
+                    <img src="~/uploads/@Model.ImagePath"
+                         id="currentImage"
+                         class="img-fluid rounded-3"
+                         style="max-height: 240px; object-fit: cover;" />
+                </div>
+
+                <!-- UPLOAD NEW -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Upload New Image</label>
+                    <input type="file" name="imageFile"
+                           class="form-control form-control-lg rounded-3"
+                           onchange="previewNewImage(event)" />
+                </div>
+
+                <!-- NEW IMAGE PREVIEW -->
+                <div id="previewBox" class="d-none">
+                    <label class="form-label fw-semibold">Preview</label>
+                    <div class="card shadow-sm border-0 rounded-4 p-3 text-center">
+                        <img id="previewImage"
+                             class="img-fluid rounded-3"
+                             style="max-height: 240px; object-fit: cover;" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="mt-4">
+            <button class="btn btn-success btn-lg rounded-pill px-4 me-2">Update Product</button>
+
+            <a href="/AdminProduct"
+               class="btn btn-outline-secondary btn-lg rounded-pill px-4">
+                Back
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+<!-- LIVE IMAGE PREVIEW SCRIPT -->
+<script>
+    function previewNewImage(event) {
+        const previewBox = document.getElementById("previewBox");
+        const previewImage = document.getElementById("previewImage");
+
+        previewBox.classList.remove("d-none");
+        previewImage.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+
+<!-- EXTRA STYLING -->
+<style>
+    .card {
+        border-radius: 1.25rem !important;
+    }
+
+    .form-control, .form-select {
+        border-radius: 0.75rem !important;
+        padding: 10px 14px !important;
+    }
+</style>
